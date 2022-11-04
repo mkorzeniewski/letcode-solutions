@@ -16,3 +16,4 @@ testdata = [
 @pytest.mark.parametrize("num, expected", testdata)
 def test_my_sqrt(num, expected):
     assert SqrtX.my_sqrt(num) == expected
+    assert SqrtX.simpler(num) == expected

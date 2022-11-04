@@ -1,5 +1,5 @@
 def check_sqrt(_min: int, _max: int, x: int):
-    mid = int((_max + _min) / 2)
+    mid = (_max + _min) // 2
     if mid * mid > x:
         return check_sqrt(_min, mid, x)
     elif mid * mid == x:
@@ -20,3 +20,16 @@ class SqrtX:
         _max = int(x / 2)
         _min = 1
         return check_sqrt(_min, _max, x)
+
+    @staticmethod
+    def simpler(x: int) -> int:
+        low = 1
+        high = x//2 + 1
+        while True:
+            mid = (low + high)//2
+            if mid * mid > x:
+                high = mid
+            elif mid * mid < x:
+                low = mid
+            if mid * mid <= x < (mid + 1) * (mid + 1):
+                return mid
