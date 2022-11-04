@@ -10,7 +10,5 @@ class LongestCommonPrefix:
             for i in reversed(range(len(prefix))):
                 if s[i] != prefix[i]:
                     prefix = prefix[:i]
-                else:
-                    break
 
         return prefix

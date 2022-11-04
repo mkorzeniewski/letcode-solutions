@@ -5,6 +5,7 @@ from src.solutions._14_Longest_Common_Prefix import LongestCommonPrefix
 testdata = [
     (["flower", "flow", "flight"], "fl"),
     (["dog", "racecar", "car"], ""),
+    (["cir", "car"], "c")
 ]
 
 
