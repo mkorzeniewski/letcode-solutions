@@ -1,4 +1,3 @@
-import sys
 from typing import List
 
 
@@ -18,7 +17,7 @@ class ThreeSumsClosest:
         res = sum(nums[:3])
 
         for i in range(0, nums):
-            low, high = i+1, len(nums)-1
+            low, high = i + 1, len(nums) - 1
             while low < high:
                 s = nums[i] + nums[low] + nums[high]
                 if abs(s - target) < abs(res - target):
@@ -31,6 +30,3 @@ class ThreeSumsClosest:
                 else:
                     return s
         return res
-
-
-
