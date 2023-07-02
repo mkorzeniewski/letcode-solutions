@@ -5,17 +5,32 @@ from typing import List
 class ThreeSumsClosest:
     @staticmethod
     def threeSum(nums: List[int], target: int) -> int:
-        closest_difference = (sys.maxsize, 0)
-        for i in range(0, len(nums)-2):
-            two_sums = [nums[i] + nums[i+1] - target]
-            for j in range(i + 2, len(nums)):
-                for k in range(0, len(two_sums)):
-                    sum3 = nums[j] + two_sums[k]
-                    if sum3 == 0:
-                        return sum3 + target
-                    abs_sum3 = - sum3 if (sum3 < 0) else sum3
-                    if closest_difference[0] > abs_sum3:
-                        closest_difference = (abs_sum3, sum3 + target)
-                two_sums.append(nums[i] + nums[j] - target)
+        nums.sort()
+        if len(nums) == 3:
+            return sum(nums[:3])
 
-        return closest_difference[1]
+        if sum(nums[:3]) > target:
+            return sum(nums[:3])
+
+        if sum(nums[-3:]) < target:
+            return sum(nums[-3:])
+
+        res = sum(nums[:3])
+
+        for i in range(0, nums):
+            low, high = i+1, len(nums)-1
+            while low < high:
+                s = nums[i] + nums[low] + nums[high]
+                if abs(s - target) < abs(res - target):
+                    res = s
+
+                if s < target:
+                    low = low + 1
+                elif s > target:
+                    high = high - 1
+                else:
+                    return s
+        return res
+
+
+
